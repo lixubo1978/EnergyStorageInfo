@@ -1,92 +1,166 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>匈牙利储能项目｜6 个关键调研主题</title>
-  <link rel="stylesheet" href="./assets/style.css" />
+
+  <style>
+    body{
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, "Noto Sans", "Helvetica Neue", sans-serif;
+      line-height: 1.7;
+      margin: 0;
+      color:#111;
+
+      /* === 参考你现有代码：淡背景图 + 轻遮罩 === */
+      background:
+        linear-gradient(rgba(255,255,255,0.30), rgba(255,255,255,0.30)),
+        url("assets/bg.png") center / cover no-repeat fixed;
+    }
+
+    header{
+      background:#0b1220;
+      color:#fff;
+      padding: 48px 20px;
+    }
+
+    .wrap{max-width: 980px; margin: 0 auto;}
+
+    h1{margin:0 0 10px 0; font-size: 40px; letter-spacing: .2px;}
+    .subhead{margin:0; font-size: 18px; opacity:.9;}
+
+    main{padding: 28px 20px 60px;}
+
+    /* 卡片（板块）样式：沿用你FAQ的 section */
+    section{
+      background:#fff;
+      border: 1px solid #eaeaea;
+      border-radius: 14px;
+      padding: 22px;
+      margin: 16px 0;
+      box-shadow: 0 1px 2px rgba(0,0,0,.04);
+    }
+
+    h2{margin: 0 0 10px 0; font-size: 22px;}
+    p{margin: 0;}
+
+    .note{
+      background:#f3f6ff;
+      border: 1px solid #dfe7ff;
+      padding: 12px 14px;
+      border-radius: 12px;
+      margin-top: 10px;
+    }
+
+    .links a{
+      display:inline-block;
+      margin: 10px 10px 0 0;
+      padding: 8px 12px;
+      border:1px solid #e6e6e6;
+      border-radius: 999px;
+      text-decoration:none;
+      color:#111;
+      background:#fff;
+    }
+    .links a:hover{border-color:#cfcfcf;}
+
+    /* 蓝色按钮（更像“进入主题”） */
+    .btn{
+      display:inline-block;
+      margin-top: 12px;
+      padding: 10px 14px;
+      border-radius: 12px;
+      text-decoration:none;
+      background:#2563eb;
+      color:#fff;
+      font-weight: 600;
+      border:1px solid rgba(0,0,0,.04);
+    }
+    .btn:hover{filter: brightness(0.96);}
+
+    /* 主题编号胶囊 */
+    .pill{
+      display:inline-block;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background:#f3f6ff;
+      border: 1px solid #dfe7ff;
+      color:#1d4ed8;
+      margin-bottom: 10px;
+    }
+
+    footer{
+      padding: 18px 20px 30px;
+      color:#666;
+      text-align:center;
+    }
+
+    @media (max-width: 760px){
+      h1{font-size:34px;}
+    }
+  </style>
 </head>
 
 <body>
-  <!-- 背景：图片 + 虚化（关键） -->
-  <div class="bg" aria-hidden="true"></div>
-
-  <main class="page">
+  <header>
     <div class="wrap">
+      <h1>匈牙利储能项目｜6 个关键调研主题</h1>
+      <p class="subhead">每个主题一个页面，逐条完善（当前子页仅含标题与返回）。</p>
+    </div>
+  </header>
 
-      <!-- 顶部一张卡（像参考图那种“简介块”） -->
-      <section class="card card-hero">
-        <div class="meta">Research Hub</div>
-        <h1>匈牙利储能项目｜6 个关键调研主题</h1>
-        <p class="desc">
-          参考你给的版面：背景虚化 + 中间卡片流。点击进入主题页（子页先保留标题与返回，后续逐条完善）。
-        </p>
-        <div class="note">
-          我们的目标是把 6 个主题逐条沉淀为可用于尽调与投委会的文档。
-        </div>
-      </section>
+  <main class="wrap">
+    <section>
+      <div class="pill">01</div>
+      <h2>电价水平与现货/电能量市场出清</h2>
+      <p>关注：日前/日内/月度数据、价差、负电价、尾部风险。</p>
+      <a class="btn" href="topic-01-price.html">进入主题 →</a>
+    </section>
 
-      <!-- 6 个主题：每个都是一张“大卡片” -->
-      <section class="card topic">
-        <div class="topic-head">
-          <span class="pill">01</span>
-          <a class="btn" href="./topic-01-price.html">进入 →</a>
-        </div>
-        <h2>电价水平与现货/电能量市场出清</h2>
-        <p>关注：日前/日内/月度数据、价差、负电价、尾部风险。</p>
-      </section>
+    <section>
+      <div class="pill">02</div>
+      <h2>调频需求：类型、里程/性能要求、调频价格</h2>
+      <p>关注：FCR/aFRR/mFRR，容量费/能量费/罚则与参与门槛。</p>
+      <a class="btn" href="topic-02-frequency.html">进入主题 →</a>
+    </section>
 
-      <section class="card topic">
-        <div class="topic-head">
-          <span class="pill">02</span>
-          <a class="btn" href="./topic-02-frequency.html">进入 →</a>
-        </div>
-        <h2>调频需求：类型、里程/性能要求、调频价格</h2>
-        <p>关注：FCR/aFRR/mFRR，容量费/能量费/罚则与参与门槛。</p>
-      </section>
+    <section>
+      <div class="pill">03</div>
+      <h2>容量补贴政策：是否有区域差异</h2>
+      <p>关注：补贴口径、适用条件、参考收入、审计与追缴风险。</p>
+      <a class="btn" href="topic-03-capacity-policy.html">进入主题 →</a>
+    </section>
 
-      <section class="card topic">
-        <div class="topic-head">
-          <span class="pill">03</span>
-          <a class="btn" href="./topic-03-capacity-policy.html">进入 →</a>
-        </div>
-        <h2>容量补贴政策：是否有区域差异</h2>
-        <p>关注：补贴口径、适用条件、参考收入、审计与追缴风险。</p>
-      </section>
+    <section>
+      <div class="pill">04</div>
+      <h2>土地问题：性质要求、价格、土地手续流程</h2>
+      <p>关注：用地类型、转性、权属链条、许可顺序与红线。</p>
+      <a class="btn" href="topic-04-land.html">进入主题 →</a>
+    </section>
 
-      <section class="card topic">
-        <div class="topic-head">
-          <span class="pill">04</span>
-          <a class="btn" href="./topic-04-land.html">进入 →</a>
-        </div>
-        <h2>土地问题：性质要求、价格、土地手续流程</h2>
-        <p>关注：用地类型、转性、权属链条、许可顺序与红线。</p>
-      </section>
+    <section>
+      <div class="pill">05</div>
+      <h2>电网结构与节点网络：是否可以拿到</h2>
+      <p>关注：并网节点、可用容量、拥塞信号、数据获取路径。</p>
+      <a class="btn" href="topic-05-grid-nodes.html">进入主题 →</a>
+    </section>
 
-      <section class="card topic">
-        <div class="topic-head">
-          <span class="pill">05</span>
-          <a class="btn" href="./topic-05-grid-nodes.html">进入 →</a>
-        </div>
-        <h2>电网结构与节点网络：是否可以拿到</h2>
-        <p>关注：并网节点、可用容量、拥塞信号、数据获取路径。</p>
-      </section>
+    <section>
+      <div class="pill">06</div>
+      <h2>年度调度次数机制与价格出清/结算规则</h2>
+      <p>关注：调度触发、次数/时长、结算逻辑、极端价格与风险封顶。</p>
+      <a class="btn" href="topic-06-dispatch-rules.html">进入主题 →</a>
+    </section>
 
-      <section class="card topic">
-        <div class="topic-head">
-          <span class="pill">06</span>
-          <a class="btn" href="./topic-06-dispatch-rules.html">进入 →</a>
-        </div>
-        <h2>年度调度次数机制与价格出清/结算规则</h2>
-        <p>关注：调度触发、次数/时长、结算逻辑、极端价格与风险封顶。</p>
-      </section>
-
-      <footer class="footer">
-        <span>© 匈牙利储能项目</span>
-        <span>Static HTML</span>
-      </footer>
-
+    <div class="note">
+      提示：后续我们会把每个主题页扩展为“明确问题清单、数据来源、结论草稿、附件链接”等内容。
     </div>
   </main>
+
+  <footer>
+    © 匈牙利储能项目 · Research Hub
+  </footer>
 </body>
 </html>
