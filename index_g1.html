@@ -12,7 +12,7 @@
       margin: 0;
       color:#111;
 
-      /* === 参考你现有代码：淡背景图 + 轻遮罩 === */
+      /* === 淡背景图（不抢内容）=== */
       background:
         linear-gradient(rgba(255,255,255,0.30), rgba(255,255,255,0.30)),
         url("assets/bg.png") center / cover no-repeat fixed;
@@ -31,7 +31,7 @@
 
     main{padding: 28px 20px 60px;}
 
-    /* 卡片（板块）样式：沿用你FAQ的 section */
+    /* 卡片（板块） */
     section{
       background:#fff;
       border: 1px solid #eaeaea;
@@ -41,55 +41,80 @@
       box-shadow: 0 1px 2px rgba(0,0,0,.04);
     }
 
-    h2{margin: 0 0 10px 0; font-size: 22px;}
-    p{margin: 0;}
-
+    /* 顶部提示块 */
     .note{
       background:#f3f6ff;
       border: 1px solid #dfe7ff;
       padding: 12px 14px;
       border-radius: 12px;
-      margin-top: 10px;
+      margin-top: 16px;
     }
 
-    .links a{
-      display:inline-block;
-      margin: 10px 10px 0 0;
-      padding: 8px 12px;
-      border:1px solid #e6e6e6;
-      border-radius: 999px;
-      text-decoration:none;
-      color:#111;
-      background:#fff;
+    /* 标题栏：左(序号+标题) 右(按钮) 同一行 */
+    .topic-head{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 12px;
+      margin-bottom: 10px;
     }
-    .links a:hover{border-color:#cfcfcf;}
 
-    /* 蓝色按钮（更像“进入主题”） */
-    .btn{
-      display:inline-block;
-      margin-top: 12px;
-      padding: 10px 14px;
-      border-radius: 12px;
-      text-decoration:none;
-      background:#2563eb;
-      color:#fff;
-      font-weight: 600;
-      border:1px solid rgba(0,0,0,.04);
+    .title-left{
+      display:flex;
+      align-items:center;
+      gap: 10px;
+      min-width: 0; /* 允许标题在小屏换行/省略 */
     }
-    .btn:hover{filter: brightness(0.96);}
 
-    /* 主题编号胶囊 */
+    /* 序号胶囊 */
     .pill{
-      display:inline-block;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
       font-size: 12px;
-      font-weight: 700;
+      font-weight: 800;
       padding: 4px 10px;
       border-radius: 999px;
       background:#f3f6ff;
       border: 1px solid #dfe7ff;
       color:#1d4ed8;
-      margin-bottom: 10px;
+      flex: 0 0 auto;
     }
+
+    /* 标题 */
+    .title{
+      font-size: 22px;
+      font-weight: 800;
+      line-height: 1.25;
+      margin: 0;
+      color:#111;
+      /* 如果你想强制单行省略：取消下一行注释 */
+      /* white-space: nowrap; overflow: hidden; text-overflow: ellipsis; */
+    }
+
+    /* 描述 */
+    .desc{
+      margin: 0;
+      color:#666;
+      font-size: 14.5px;
+    }
+
+    /* 右侧按钮 */
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding: 9px 12px;
+      border-radius: 999px;
+      text-decoration:none;
+      background:#2563eb;
+      color:#fff;
+      font-weight: 700;
+      border:1px solid rgba(0,0,0,.04);
+      flex: 0 0 auto;
+      white-space: nowrap;
+    }
+    .btn:hover{filter: brightness(0.96);}
 
     footer{
       padding: 18px 20px 30px;
@@ -99,6 +124,10 @@
 
     @media (max-width: 760px){
       h1{font-size:34px;}
+      header{padding: 40px 20px;}
+      .title{font-size:20px;}
+      section{padding: 18px;}
+      .btn{padding: 8px 10px;}
     }
   </style>
 </head>
@@ -112,51 +141,83 @@
   </header>
 
   <main class="wrap">
+
+    <!-- 01 -->
     <section>
-      <div class="pill">01</div>
-      <h2>电价水平与现货/电能量市场出清</h2>
-      <p>关注：日前/日内/月度数据、价差、负电价、尾部风险。</p>
-      <a class="btn" href="topic-01-price.html">进入主题 →</a>
+      <div class="topic-head">
+        <div class="title-left">
+          <span class="pill">01</span>
+          <h2 class="title">电价水平与现货/电能量市场出清</h2>
+        </div>
+        <a class="btn" href="topic-01-price.html">进入主题 →</a>
+      </div>
+      <p class="desc">关注：日前/日内/月度数据、价差、负电价、尾部风险。</p>
     </section>
 
+    <!-- 02 -->
     <section>
-      <div class="pill">02</div>
-      <h2>调频需求：类型、里程/性能要求、调频价格</h2>
-      <p>关注：FCR/aFRR/mFRR，容量费/能量费/罚则与参与门槛。</p>
-      <a class="btn" href="topic-02-frequency.html">进入主题 →</a>
+      <div class="topic-head">
+        <div class="title-left">
+          <span class="pill">02</span>
+          <h2 class="title">调频需求：类型、里程/性能要求、调频价格</h2>
+        </div>
+        <a class="btn" href="topic-02-frequency.html">进入主题 →</a>
+      </div>
+      <p class="desc">关注：FCR/aFRR/mFRR，容量费/能量费/罚则与参与门槛。</p>
     </section>
 
+    <!-- 03 -->
     <section>
-      <div class="pill">03</div>
-      <h2>容量补贴政策：是否有区域差异</h2>
-      <p>关注：补贴口径、适用条件、参考收入、审计与追缴风险。</p>
-      <a class="btn" href="topic-03-capacity-policy.html">进入主题 →</a>
+      <div class="topic-head">
+        <div class="title-left">
+          <span class="pill">03</span>
+          <h2 class="title">容量补贴政策：是否有区域差异</h2>
+        </div>
+        <a class="btn" href="topic-03-capacity-policy.html">进入主题 →</a>
+      </div>
+      <p class="desc">关注：补贴口径、适用条件、参考收入、审计与追缴风险。</p>
     </section>
 
+    <!-- 04 -->
     <section>
-      <div class="pill">04</div>
-      <h2>土地问题：性质要求、价格、土地手续流程</h2>
-      <p>关注：用地类型、转性、权属链条、许可顺序与红线。</p>
-      <a class="btn" href="topic-04-land.html">进入主题 →</a>
+      <div class="topic-head">
+        <div class="title-left">
+          <span class="pill">04</span>
+          <h2 class="title">土地问题：性质要求、价格、土地手续流程</h2>
+        </div>
+        <a class="btn" href="topic-04-land.html">进入主题 →</a>
+      </div>
+      <p class="desc">关注：用地类型、转性、权属链条、许可顺序与红线。</p>
     </section>
 
+    <!-- 05 -->
     <section>
-      <div class="pill">05</div>
-      <h2>电网结构与节点网络：是否可以拿到</h2>
-      <p>关注：并网节点、可用容量、拥塞信号、数据获取路径。</p>
-      <a class="btn" href="topic-05-grid-nodes.html">进入主题 →</a>
+      <div class="topic-head">
+        <div class="title-left">
+          <span class="pill">05</span>
+          <h2 class="title">电网结构与节点网络：是否可以拿到</h2>
+        </div>
+        <a class="btn" href="topic-05-grid-nodes.html">进入主题 →</a>
+      </div>
+      <p class="desc">关注：并网节点、可用容量、拥塞信号、数据获取路径。</p>
     </section>
 
+    <!-- 06 -->
     <section>
-      <div class="pill">06</div>
-      <h2>年度调度次数机制与价格出清/结算规则</h2>
-      <p>关注：调度触发、次数/时长、结算逻辑、极端价格与风险封顶。</p>
-      <a class="btn" href="topic-06-dispatch-rules.html">进入主题 →</a>
+      <div class="topic-head">
+        <div class="title-left">
+          <span class="pill">06</span>
+          <h2 class="title">年度调度次数机制与价格出清/结算规则</h2>
+        </div>
+        <a class="btn" href="topic-06-dispatch-rules.html">进入主题 →</a>
+      </div>
+      <p class="desc">关注：调度触发、次数/时长、结算逻辑、极端价格与风险封顶。</p>
     </section>
 
     <div class="note">
       提示：后续我们会把每个主题页扩展为“明确问题清单、数据来源、结论草稿、附件链接”等内容。
     </div>
+
   </main>
 
   <footer>
