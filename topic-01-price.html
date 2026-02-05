@@ -1,1 +1,259 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Topic 01｜电价与现货出清｜匈牙利储能项目</title>
 
+  <style>
+    body{
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, "Noto Sans", "Helvetica Neue", sans-serif;
+      line-height: 1.7;
+      margin: 0;
+      color:#111;
+
+      /* === 淡背景图（不抢内容）=== */
+      background:
+        linear-gradient(rgba(255,255,255,0.30), rgba(255,255,255,0.30)),
+        url("assets/bg.png") center / cover no-repeat fixed;
+    }
+
+    header{
+      background:#0b1220;
+      color:#fff;
+      padding: 44px 20px;
+    }
+
+    .wrap{max-width: 980px; margin: 0 auto;}
+
+    h1{margin:0 0 10px 0; font-size: 34px; letter-spacing: .2px;}
+    .subhead{margin:0; font-size: 16px; opacity:.9;}
+
+    main{padding: 22px 20px 60px;}
+
+    section{
+      background:#fff;
+      border: 1px solid #eaeaea;
+      border-radius: 14px;
+      padding: 22px;
+      margin: 16px 0;
+      box-shadow: 0 1px 2px rgba(0,0,0,.04);
+    }
+
+    h2{margin: 0 0 10px 0; font-size: 22px;}
+    h3{margin: 14px 0 6px; font-size: 18px;}
+    p{margin: 0;}
+    ul{margin: 8px 0 0 20px;}
+    li{margin: 6px 0;}
+
+    .note{
+      background:#f3f6ff;
+      border: 1px solid #dfe7ff;
+      padding: 12px 14px;
+      border-radius: 12px;
+      margin-top: 10px;
+      color:#1f2a44;
+    }
+
+    .links a{
+      display:inline-block;
+      margin: 6px 10px 0 0;
+      padding: 8px 12px;
+      border:1px solid #e6e6e6;
+      border-radius: 999px;
+      text-decoration:none;
+      color:#111;
+      background:#fff;
+    }
+    .links a:hover{border-color:#cfcfcf;}
+
+    /* 标题栏：左(序号+标题) 右(按钮) 同一行 */
+    .topic-head{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+    .title-left{
+      display:flex;
+      align-items:center;
+      gap: 10px;
+      min-width: 0;
+    }
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      font-size: 12px;
+      font-weight: 800;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background:#f3f6ff;
+      border: 1px solid #dfe7ff;
+      color:#1d4ed8;
+      flex: 0 0 auto;
+    }
+    .title{
+      font-size: 22px;
+      font-weight: 800;
+      line-height: 1.25;
+      margin: 0;
+      color:#111;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding: 9px 12px;
+      border-radius: 999px;
+      text-decoration:none;
+      background:#2563eb;
+      color:#fff;
+      font-weight: 700;
+      border:1px solid rgba(0,0,0,.04);
+      flex: 0 0 auto;
+      white-space: nowrap;
+    }
+    .btn:hover{filter: brightness(0.96);}
+
+    .muted{color:#666;}
+
+    footer{
+      padding: 18px 20px 30px;
+      color:#666;
+      text-align:center;
+    }
+
+    @media (max-width: 760px){
+      header{padding: 38px 20px;}
+      h1{font-size:30px;}
+      .title{font-size:20px;}
+      section{padding: 18px;}
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="wrap">
+      <h1>Topic 01｜电价水平与现货/电能量市场出清</h1>
+      <p class="subhead">目标：用“日前/日内/月度数据 + 价差 + 负电价 + 尾部风险”建立可核验的市场画像，为后续储能收益建模打底。</p>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="links" style="margin: 6px 0 14px;">
+      <a href="index.html">← 返回首页</a>
+    </div>
+
+    <!-- 卡片 1：本页要完成什么 -->
+    <section>
+      <div class="topic-head">
+        <div class="title-left">
+          <span class="pill">01</span>
+          <h2 class="title">本页交付物（先搭骨架，后续逐条填充）</h2>
+        </div>
+        <a class="btn" href="#checklist">跳到清单 ↓</a>
+      </div>
+      <ul>
+        <li>电价数据：日前（DAM）/日内（ID）/（可选：不平衡价）的“可追溯来源 + 下载口径”。</li>
+        <li>月度统计：月均价、P10/P50/P90、最大/最小、波动率（标准差）。</li>
+        <li>价差：日内峰谷价差（月度汇总）、（可选）日前与日内差异特征。</li>
+        <li>负电价：负价小时占比、最长连续负价时段、季节性/时段性。</li>
+        <li>尾部风险：极端高价小时（P95/P99、Top1%均值）、极端事件说明。</li>
+      </ul>
+      <div class="note">
+        说明：本页先把“问题清单 + 数据来源 + 输出模板”固定下来，后面我们按同一套路把数据逐项补齐。
+      </div>
+    </section>
+
+    <!-- 卡片 2：明确问题清单 -->
+    <section id="checklist">
+      <h2>明确问题清单（你要拿到的最终答案）</h2>
+      <h3>1) 数据覆盖与口径</h3>
+      <ul>
+        <li>匈牙利日前（DAM）与日内（ID）价格：能获取的最早日期到哪一年？是否有缺失？时区/夏令时如何处理？</li>
+        <li>价格单位与币种：是否统一为 EUR/MWh？如源数据不是，如何换算与记录依据？</li>
+      </ul>
+
+      <h3>2) 月度电价画像</h3>
+      <ul>
+        <li>近 36–60 个月：每月均价、P10/P50/P90、最大/最小、标准差分别是多少？</li>
+        <li>月度季节性：哪几个月通常更高/更低？是否与供需/天气/跨境耦合有关？（先写观察，后续再解释）</li>
+      </ul>
+
+      <h3>3) 价差（储能套利空间的核心）</h3>
+      <ul>
+        <li>日内峰谷价差：按“每日最高价-最低价”，汇总到月度（均值/中位数/分位数）。</li>
+        <li>价差的稳定性：价差是否集中在少数极端日？还是比较均匀？</li>
+      </ul>
+
+      <h3>4) 负电价</h3>
+      <ul>
+        <li>每月负电价小时数/占比是多少？最长连续负价时段多长？</li>
+        <li>负价集中在什么时段（小时/周末/季节）？是否与光伏高发期相关？</li>
+      </ul>
+
+      <h3>5) 尾部风险（Top 1% 的小时往往决定全年结果）</h3>
+      <ul>
+        <li>每月 P95/P99、Top1%均价、单小时最高价分别是多少？</li>
+        <li>极端事件的解释线索：是否来自系统紧张、拥塞、备用不足、极端天气等？（只记录“可能原因+证据链接”）</li>
+      </ul>
+    </section>
+
+    <!-- 卡片 3：数据来源（先列“去哪找”） -->
+    <section>
+      <h2>数据来源与获取路径（占位：后续逐条补链接与下载方式）</h2>
+      <h3>A. 交易所/市场数据（日前/日内）</h3>
+      <ul>
+        <li><strong>HUPX</strong>：日前（DAM）、日内（ID）出清价格/市场结果（写入：链接、是否可下载CSV、是否需注册）。</li>
+      </ul>
+
+      <h3>B. 欧盟透明平台（交叉验证/补齐）</h3>
+      <ul>
+        <li><strong>ENTSO-E Transparency</strong>：价格与系统数据的统一入口（写入：查询路径、接口/下载方式）。</li>
+      </ul>
+
+      <h3>C. 国家系统运营商（系统层面/不平衡/规则线索）</h3>
+      <ul>
+        <li><strong>MAVIR</strong>：系统运行相关发布（写入：不平衡价、调度/系统紧张公告等线索）。</li>
+      </ul>
+
+      <div class="note">
+        你把每个来源的“链接 + 访问步骤 + 下载格式 + 数据范围”填进来，我们后续就能直接做月度统计与图表。
+      </div>
+    </section>
+
+    <!-- 卡片 4：输出展示模板（你页面里最终放的表/图） -->
+    <section>
+      <h2>输出展示模板（后续把图/表一项项补齐）</h2>
+
+      <h3>建议放 6 个核心输出</h3>
+      <ul>
+        <li>图1：近 36–60 个月月均价折线（DAM / ID 分开或叠加）。</li>
+        <li>图2：月度价格分布（箱线图：P10/P50/P90 + 极值）。</li>
+        <li>图3：月度日内峰谷价差（均值/中位数/分位数）。</li>
+        <li>图4：负电价小时占比（月度柱状）。</li>
+        <li>图5：尾部风险（月度 P99 / Top1%均价 / Max）。</li>
+        <li>表1：月度汇总表（均价、分位数、波动率、价差、负价、尾部）。</li>
+      </ul>
+
+      <div class="note">
+        等我们拿到数据后，你只需要把截图/图片或表格贴进来；若你希望自动生成图表，我们再加一版“数据文件 + 生成脚本”的方案。
+      </div>
+    </section>
+
+    <!-- 卡片 5：结论草稿（先留空位） -->
+    <section>
+      <h2>阶段性结论（占位）</h2>
+      <p class="muted">（先空着）后续我们会在这里写：一句话结论 + 关键证据（图/表/链接）+ 下一步缺口。</p>
+    </section>
+
+  </main>
+
+  <footer>
+    © 匈牙利储能项目 · Topic 01
+  </footer>
+</body>
+</html>
