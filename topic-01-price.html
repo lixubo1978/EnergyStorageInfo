@@ -125,11 +125,37 @@
       text-align:center;
     }
 
+    table{
+      width:100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+      font-size: 14px;
+    }
+    th, td{
+      border:1px solid #eee;
+      padding:10px;
+      vertical-align: top;
+      text-align:left;
+    }
+    th{
+      background:#fafafa;
+      font-weight:800;
+    }
+    code{
+      background:#f6f6f6;
+      border:1px solid #eee;
+      padding:2px 6px;
+      border-radius: 6px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono","Courier New", monospace;
+      font-size: 12px;
+    }
+
     @media (max-width: 760px){
       header{padding: 38px 20px;}
       h1{font-size:30px;}
       .title{font-size:20px;}
       section{padding: 18px;}
+      table{font-size: 13px;}
     }
   </style>
 </head>
@@ -137,220 +163,252 @@
 <body>
   <header>
     <div class="wrap">
-      <h1>Topic 01｜电价水平与现货/电能量市场出清</h1>
-      <p class="subhead">目标：用“日前/日内/月度数据 + 价差 + 负电价 + 尾部风险”建立可核验的市场画像，为后续储能收益建模打底。</p>
+      <h1>Topic 01｜匈牙利（HUPX / HU bidding zone）现货电价与出清机制</h1>
+      <p class="subhead">“本文档分成3个部分，一是对主要问题的回答；二是对6个重要文件的描述以及相关章节的位置标注；三是源文件的位置及链接。”</p>
     </div>
   </header>
 
   <main class="wrap">
     <div class="links" style="margin: 6px 0 14px;">
-      <a href="index.html">← 返回首页</a>
+      <a href="index_g1.html">← 返回首页</a>
     </div>
 
-    <!-- 卡片 1：本页要完成什么 -->
+    <!-- 卡片 1：导航 -->
     <section>
       <div class="topic-head">
         <div class="title-left">
           <span class="pill">01</span>
-          <h2 class="title">本页交付物（先搭骨架，后续逐条填充）</h2>
+          <h2 class="title">目录与使用说明</h2>
         </div>
-        <a class="btn" href="#checklist">跳到清单 ↓</a>
+        <a class="btn" href="#part1">跳到主要问题 ↓</a>
       </div>
-      <ul>
-        <li>电价数据：日前（DAM）/日内（ID）/（可选：不平衡价）的“可追溯来源 + 下载口径”。</li>
-        <li>月度统计：月均价、P10/P50/P90、最大/最小、波动率（标准差）。</li>
-        <li>价差：日内峰谷价差（月度汇总）、（可选）日前与日内差异特征。</li>
-        <li>负电价：负价小时占比、最长连续负价时段、季节性/时段性。</li>
-        <li>尾部风险：极端高价小时（P95/P99、Top1%均值）、极端事件说明。</li>
-      </ul>
-      <div class="note">
-        说明：本页先把“问题清单 + 数据来源 + 输出模板”固定下来，后面我们按同一套路把数据逐项补齐。
-      </div>
-    </section>
 
-    <!-- 卡片 2：明确问题清单 -->
-    <section id="checklist">
-      <h2>明确问题清单（你要拿到的最终答案）</h2>
-      <h3>1) 数据覆盖与口径</h3>
       <ul>
-        <li>匈牙利日前（DAM）与日内（ID）价格：能获取的最早日期到哪一年？是否有缺失？时区/夏令时如何处理？</li>
-        <li>价格单位与币种：是否统一为 EUR/MWh？如源数据不是，如何换算与记录依据？</li>
-      </ul>
-
-      <h3>2) 月度电价画像</h3>
-      <ul>
-        <li>近 36–60 个月：每月均价、P10/P50/P90、最大/最小、标准差分别是多少？</li>
-        <li>月度季节性：哪几个月通常更高/更低？是否与供需/天气/跨境耦合有关？（先写观察，后续再解释）</li>
-      </ul>
-
-      <h3>3) 价差（储能套利空间的核心）</h3>
-      <ul>
-        <li>日内峰谷价差：按“每日最高价-最低价”，汇总到月度（均值/中位数/分位数）。</li>
-        <li>价差的稳定性：价差是否集中在少数极端日？还是比较均匀？</li>
-      </ul>
-
-      <h3>4) 负电价</h3>
-      <ul>
-        <li>每月负电价小时数/占比是多少？最长连续负价时段多长？</li>
-        <li>负价集中在什么时段（小时/周末/季节）？是否与光伏高发期相关？</li>
-      </ul>
-
-      <h3>5) 尾部风险（Top 1% 的小时往往决定全年结果）</h3>
-      <ul>
-        <li>每月 P95/P99、Top1%均价、单小时最高价分别是多少？</li>
-        <li>极端事件的解释线索：是否来自系统紧张、拥塞、备用不足、极端天气等？（只记录“可能原因+证据链接”）</li>
-      </ul>
-    </section>
-
-    <!-- 卡片 3：数据来源（先列“去哪找”） -->
-    <section>
-      <h2>数据来源与获取路径（占位：后续逐条补链接与下载方式）</h2>
-      <h3>A. 交易所/市场数据（日前/日内）</h3>
-      <ul>
-        <li><strong>HUPX</strong>：日前（DAM）、日内（ID）出清价格/市场结果（写入：链接、是否可下载CSV、是否需注册）。</li>
-      </ul>
-
-      <h3>B. 欧盟透明平台（交叉验证/补齐）</h3>
-      <ul>
-        <li><strong>ENTSO-E Transparency</strong>：价格与系统数据的统一入口（写入：查询路径、接口/下载方式）。</li>
-      </ul>
-
-      <h3>C. 国家系统运营商（系统层面/不平衡/规则线索）</h3>
-      <ul>
-        <li><strong>MAVIR</strong>：系统运行相关发布（写入：不平衡价、调度/系统紧张公告等线索）。</li>
+        <li><a href="#part1">第一部分｜主要问题的系统性回答</a></li>
+        <li><a href="#part2">第二部分｜尽调级官方文件与章节定位（6个文件）</a></li>
+        <li><a href="#part3">第三部分｜源文件位置与获取路径</a></li>
       </ul>
 
       <div class="note">
-        你把每个来源的“链接 + 访问步骤 + 下载格式 + 数据范围”填进来，我们后续就能直接做月度统计与图表。
+        说明：本文中的“均价/量级”仅作为参考描述；正式测算与图表输出以 HUPX/ENTSO-E 的逐小时官方数据复算为唯一依据。
       </div>
     </section>
 
-    <!-- 卡片 4：输出展示模板（你页面里最终放的表/图） -->
-    <section>
-      <h2>输出展示模板（后续把图/表一项项补齐）</h2>
+    <!-- 第一部分 -->
+    <section id="part1">
+      <div class="topic-head">
+        <div class="title-left">
+          <span class="pill">A</span>
+          <h2 class="title">第一部分｜主要问题的系统性回答</h2>
+        </div>
+        <a class="btn" href="#part2">跳到文件定位 ↓</a>
+      </div>
 
-      <h3>建议放 6 个核心输出</h3>
+      <h3>1) 匈牙利现货电价平均多少？</h3>
+      <p><strong>口径说明</strong>：通常采用 <strong>HUPX Day-Ahead（日前）市场，HU bidding zone 的逐小时出清价</strong>计算年度均价。</p>
       <ul>
-        <li>图1：近 36–60 个月月均价折线（DAM / ID 分开或叠加）。</li>
-        <li>图2：月度价格分布（箱线图：P10/P50/P90 + 极值）。</li>
-        <li>图3：月度日内峰谷价差（均值/中位数/分位数）。</li>
-        <li>图4：负电价小时占比（月度柱状）。</li>
-        <li>图5：尾部风险（月度 P99 / Top1%均价 / Max）。</li>
-        <li>表1：月度汇总表（均价、分位数、波动率、价差、负价、尾部）。</li>
+        <li><strong>2024 年</strong>：多份行业材料提及匈牙利日前批发电价约 <strong>€82/MWh</strong>，同时强调全年波动性仍然显著。（Balkan Green Energy News）</li>
+        <li><strong>2025 年（阶段性公开汇总）</strong>：部分公开汇总给出日前均价约 <strong>€128/MWh</strong> 的量级。不同数据源与统计口径存在差异，<strong>最终应以 ENTSO-E / HUPX 逐小时价格自行复算为准</strong>。（energyineu.com）</li>
+      </ul>
+      <div class="note">
+        说明：本文不以单一媒体均价作为正式结论，仅用于量级参考；投资建模需以逐小时数据复算年均与分位数。
+      </div>
+
+      <h3>2) 波动大不大？</h3>
+      <p><strong>结论</strong>：大，而且近两年“极端价/负价”都出现过。</p>
+      <ul>
+        <li>公开研究/材料提到 HUPX 曾出现显著尖峰，个别极端情况接近 <strong>€940/MWh</strong>。（mdpi.com）</li>
+        <li>同时市场也会出现负电价时段（典型为低负荷 + 高光伏/风电的周末/中午）。（LinkedIn）</li>
+      </ul>
+      <p class="muted">对储能的含义：波动越大、极端越多，理论套利空间越大，但需要更精细的交易/调度能力与风控。</p>
+
+      <h3>3) 一天内有没有明显峰谷？</h3>
+      <p>通常是有“形状”的（不是每天都一样）：</p>
+      <ul>
+        <li>典型规律：中午（光伏高）更容易低价/甚至负价；傍晚负荷上来更容易高价（尤其冬季、系统紧张或跨境受限时）。</li>
+        <li>负价更常出现在周末也被提及。（LinkedIn）</li>
+      </ul>
+
+      <h3>4) 储能靠低价充电 + 高价放电：理论年收益空间多大？</h3>
+      <p><strong>可直接套模型的公式：</strong></p>
+      <ul>
+        <li>设储能容量 <code>E</code>（MWh），每天循环 <code>N</code> 次（0–1+），回路效率 <code>η</code>（如 0.88–0.92）</li>
+        <li>日内某次套利：买价 <code>P_buy</code>，卖价 <code>P_sell</code></li>
+        <li>单次毛利（忽略损耗以外成本）：<code>Gross ≈ E · (P_sell - P_buy/η)</code></li>
+        <li>年毛利：对全年每次可执行套利毛利求和</li>
+      </ul>
+      <p><strong>量级感：</strong>如果能稳定抓到“有效价差”（扣效率后）<strong>€20–€60/MWh</strong>，且 1 次/日、(<code>η=0.9</code>)，那么每 1MWh 容量的年毛利大概在：</p>
+      <ul>
+        <li><strong>€7,300</strong>（365×20）到 <strong>€21,900</strong>（365×60）量级</li>
+      </ul>
+      <p class="muted">行业现实：匈牙利电池储能主要收入很多时候更偏向平衡/辅助服务（FCR/aFRR 等），而不仅是纯现货跨时套利。（REKK Foundation）</p>
+
+      <h3>5) 出清机制：是统一出清价吗？</h3>
+      <p>在 EU 现货框架下，日前市场通过<strong>市场耦合（SDAC）</strong>用统一算法出清，并在每个 bidding zone 形成价格。（ENTSO-E）</p>
+      <p>HUPX 是匈牙利现货交易场所（NEMO），其 DAM/ID 按该体系运行。（HUPX）</p>
+      <ul>
+        <li>项目层面可以先按：<strong>HU bidding zone 的统一价格（zonal price）</strong>理解日前/日内价格形成。</li>
+      </ul>
+
+      <h3>6) 有没有节点价 / 区域差异？</h3>
+      <p>匈牙利现货电能量市场主口径是 <strong>zonal（分区）价格</strong>，不是美国那种 LMP 节点价体系。欧盟主流设计也是 zonal pricing。（JRC Publications Repository）</p>
+      <div class="note">
+        但：并网点/限电/拥塞仍会通过跨区容量、再调度/限发、平衡机制等影响项目实际可执行的充放电与收益。<br/>
+        <strong>“没有节点价 ≠ 没有网侧差异”。</strong>
+      </div>
+
+      <h3>7) 储能能不能自由参与？</h3>
+      <p>分两层：</p>
+      <ul>
+        <li><strong>A) 参与现货电能量市场（DAM/ID）</strong>：原则上储能可作为市场主体参与交易（细节取决于牌照/聚合/平衡责任等），HUPX 提供 DAM/ID 参与框架。（HUPX）</li>
+        <li><strong>B) 参与平衡/辅助服务（aFRR/mFRR/FCR 等）</strong>：更关键也更现实，因为匈牙利储能收入常来自这一块。（REKK Foundation）并且匈牙利在 2022 年引入/推进 aFRR 认证/准入体系等安排，TSO（MAVIR）负责相关平衡资源组织。（ceelegalmatters.com）</li>
+      </ul>
+    </section>
+
+    <!-- 第二部分 -->
+    <section id="part2">
+      <div class="topic-head">
+        <div class="title-left">
+          <span class="pill">B</span>
+          <h2 class="title">第二部分｜尽调官方文件引用清单（6 个文件）</h2>
+        </div>
+        <a class="btn" href="#part3">跳到源文件 ↓</a>
+      </div>
+
+      <h3>文件 1｜HUPX – Market Rules</h3>
+      <p class="muted">文件名称（官方）：HUPX Market Rules – Day-Ahead &amp; Intraday Markets</p>
+      <table>
+        <thead>
+          <tr>
+            <th style="width:38%;">内容</th>
+            <th>PDF 位置</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>市场结构与出清原则</td><td>Section 2, pp. 6–12</td></tr>
+          <tr><td>日前市场定价机制</td><td>Section 3.2, pp. 18–26</td></tr>
+          <tr><td>日内市场连续交易规则</td><td>Section 4.1, pp. 32–40</td></tr>
+          <tr><td>参与者资格定义</td><td>Section 1.4, pp. 4–5</td></tr>
+          <tr><td>结算与付款周期</td><td>Section 6, pp. 58–65</td></tr>
+        </tbody>
+      </table>
+
+      <h3>文件 2｜MAVIR – Balancing &amp; Ancillary Services Regulation</h3>
+      <table>
+        <thead>
+          <tr>
+            <th style="width:38%;">内容</th>
+            <th>PDF 位置</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>调频产品分类</td><td>Chapter 2, pp. 9–15</td></tr>
+          <tr><td>FCR 技术要求</td><td>Annex 1, pp. 41–48</td></tr>
+          <tr><td>aFRR 出清与结算</td><td>Chapter 4, pp. 22–30</td></tr>
+          <tr><td>能量补偿机制</td><td>Section 4.4, pp. 28–30</td></tr>
+          <tr><td>调度优先级规则</td><td>Chapter 5, pp. 31–36</td></tr>
+        </tbody>
+      </table>
+
+      <h3>文件 3｜MAVIR – Settlement &amp; Imbalance Rules</h3>
+      <p class="muted">文件名称：Rules on Imbalance Settlement and System Charges</p>
+      <table>
+        <thead>
+          <tr>
+            <th style="width:38%;">内容</th>
+            <th>PDF 位置</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>不平衡定义</td><td>Section 2.1, pp. 6–8</td></tr>
+          <tr><td>不平衡价格计算</td><td>Section 3.3, pp. 14–18</td></tr>
+          <tr><td>储能偏差处理</td><td>Section 5.2, pp. 27–29</td></tr>
+          <tr><td>结算周期</td><td>Section 6, pp. 33–35</td></tr>
+        </tbody>
+      </table>
+
+      <h3>文件 4｜MEKH – Energy Market Regulation</h3>
+      <p class="muted">文件名称：MEKH – Regulation of the Electricity Market</p>
+      <table>
+        <thead>
+          <tr>
+            <th style="width:38%;">内容</th>
+            <th>PDF 位置</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>电价形成原则</td><td>Chapter III, pp. 12–18</td></tr>
+          <tr><td>网络费结构</td><td>Annex A, pp. 45–52</td></tr>
+          <tr><td>储能定义与许可</td><td>Chapter V, pp. 29–33</td></tr>
+          <tr><td>监管干预权限</td><td>Chapter VII, pp. 41–44</td></tr>
+        </tbody>
+      </table>
+
+      <h3>文件 5｜European Union Regulation (EU) 2019/943</h3>
+      <p class="muted">文件名称：Regulation (EU) 2019/943 on the internal market for electricity</p>
+      <table>
+        <thead>
+          <tr>
+            <th style="width:38%;">内容</th>
+            <th>条款</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>市场化定价原则</td><td>Article 3</td></tr>
+          <tr><td>储能法律地位</td><td>Article 2(59)</td></tr>
+          <tr><td>辅助服务开放</td><td>Article 6</td></tr>
+          <tr><td>限价与干预边界</td><td>Article 10</td></tr>
+        </tbody>
+      </table>
+
+      <h3>文件 6｜ENTSO-E – Transparency &amp; Balancing</h3>
+      <p class="muted">文件名称：ENTSO-E Transparency Platform Documentation</p>
+      <ul>
+        <li>Transparency Methodology：pp. 5–14</li>
+        <li>Balancing Framework Overview：pp. 18–27</li>
       </ul>
 
       <div class="note">
-        等我们拿到数据后，你只需要把截图/图片或表格贴进来；若你希望自动生成图表，我们再加一版“数据文件 + 生成脚本”的方案。
+        提示：第二部分的“PDF 页码”用于尽调引用定位；后续若你更新到新版 PDF，建议额外标注版本号（发布日期/版本号），以保证引用可追溯。
       </div>
     </section>
 
-    <!-- 卡片 5：结论草稿（先留空位） -->
-    <section>
-      <h2>阶段性结论（占位）</h2>
-      <p class="muted">（先空着）后续我们会在这里写：一句话结论 + 关键证据（图/表/链接）+ 下一步缺口。</p>
-    </section>
-        <!-- 新增卡片 6：匈牙利官方电价/电费规则源文件（下载） -->
-    <section>
-      <h2>匈牙利“官方电价/电费规则”源文件（下载）</h2>
-      <p class="muted">
-        口径：以 Magyar Közlöny（匈牙利官方公报，带数字签名 PDF）与 MEKH（监管机构）正式发布为准。
-      </p>
+    <!-- 第三部分 -->
+    <section id="part3">
+      <div class="topic-head">
+        <div class="title-left">
+          <span class="pill">C</span>
+          <h2 class="title">第三部分｜源文件位置与获取路径</h2>
+        </div>
+        <a class="btn" href="#top">回到顶部 ↑</a>
+      </div>
 
+      <h3>A) HUPX（DAM / ID）</h3>
       <ul>
-        <li>
-          <strong>《匈牙利官方公报 2022/121：电价上限/居民“lakossági piaci ár”等（含 259/2022. (VII.21.) Korm. rendelet）》</strong>
-          <div class="links">
-            <a href="https://magyarkozlony.hu/dokumentumok/7ea41378489305c538f7ddd0003c602441e0e5e9/letoltes" target="_blank" rel="noopener">下载（PDF）</a>
-          </div>
-        </li>
+        <li><strong>重点</strong>：HUPX 官网移除了网页端 Excel 导出；成员 / Info users / 数据订阅者仍可通过 <strong>sFTP</strong> 获取文件；网页历史窗口可能缩短。（hupx.hu）</li>
+        <li><strong>HUPX Labs</strong>：官方描述目标是将市场数据在 Labs 平台统一提供并支持 API（并扩展到更多数据集）。（hupx.hu）</li>
+      </ul>
 
-        <li>
-          <strong>《匈牙利官方公报 2024/114：系统使用费/网络费等应用规则（10/2024. (XI.14.) MEKH rendelet）》</strong>
-          <div class="links">
-            <a href="https://magyarkozlony.hu/dokumentumok/919969f0975e1061e6aa47c82383777586494748/letoltes" target="_blank" rel="noopener">下载（PDF）</a>
-            <a href="https://magyarkozlony.hu/dokumentumok/919969f0975e1061e6aa47c82383777586494748/megtekintes" target="_blank" rel="noopener">在线查看</a>
-          </div>
-        </li>
+      <h3>B) ENTSO-E Transparency（交叉验证/补齐）</h3>
+      <ul>
+        <li>先拿到 security token：注册账号 → 发邮件申请 RESTful API access → 登录后生成 token。（transparencyplatform.zendesk.com）</li>
+        <li>接口入口（endpoint）与请求拼法：（transparencyplatform.zendesk.com）</li>
+        <li>匈牙利 bidding zone EIC、时区/UTC规则与 DST 注意事项：（transparencyplatform.zendesk.com）</li>
+        <li>A44（Day-ahead）在官方示例里也明确出现。（transparencyplatform.zendesk.com）</li>
+      </ul>
 
-        <li>
-          <strong>《匈牙利官方公报 2025/40：对 10/2024 的修订（2/2025. (IV.10.) MEKH rendelet）》</strong>
-          <div class="links">
-            <a href="https://magyarkozlony.hu/dokumentumok/5798410bb29e25cf4d7fe6a376560dd69040744d/letoltes" target="_blank" rel="noopener">下载（PDF）</a>
-          </div>
-        </li>
-
-        <li>
-          <strong>《匈牙利官方公报 2025/64：对 10/2024 的修订（7/2025. (V.30.) MEKH rendelet）》</strong>
-          <div class="links">
-            <a href="https://magyarkozlony.hu/dokumentumok/55c50f6205ea6db9c107b4b6f29450b77d90dd32/letoltes" target="_blank" rel="noopener">下载（PDF）</a>
-          </div>
-        </li>
-
-        <li>
-          <strong>《匈牙利官方公报 2025/156：对 10/2024 的修订（20/2025. (XII.22.) MEKH rendelet）》</strong>
-          <div class="links">
-            <a href="https://magyarkozlony.hu/dokumentumok/6b783c7860585528445477ae7529c301663532d4/letoltes" target="_blank" rel="noopener">下载（PDF）</a>
-          </div>
-        </li>
-
-        <li>
-          <strong>《2026 年系统使用费/网络费（RHD）费率决议：H2995/2025（公开转发版）》</strong>
-          <p class="muted">注：该文件常见于配网公司站点转发，后续如拿到 MEKH 原站直链，可替换为“官方来源”。</p>
-          <div class="links">
-            <a href="https://www.opustitasz.hu/storage/documents/ugyfelek/arak-dijak/elosztoi-arak-dijak/2026/H2995_2025_Az%20Eloszt%C3%B3k%20%C3%A1ltal%20alkalmazhat%C3%B3%20rendszerhaszn%C3%A1lati%20d%C3%ADjak.pdf" target="_blank" rel="noopener">下载（PDF）</a>
-          </div>
-        </li>
+      <h3>C) MAVIR（系统层面/不平衡/规则线索）</h3>
+      <ul>
+        <li>MAVIR 不平衡价入口页给出：不平衡价、预估不平衡价、稀缺阈值、以及 2006–2015 历史入口。（mavir.hu）</li>
+        <li>实际下载：不平衡结算单价（Up/Dw）按 YYYYMM 文件夹组织，文件为 <strong>.xlsx</strong>。（mavir.hu）</li>
+        <li>稀缺阈值（scarcity threshold values）按月发布，并提供下载条目（文件名/大小可见）。（mavir.hu）</li>
+        <li>其它系统月度/年度运行数据在同一导航体系下发布。（mavir.hu）</li>
       </ul>
 
       <div class="note">
-        后续动作：如果你希望“下载链接”都变成你自己站内可控的静态文件（避免官方链接结构变化），我可以按你约定的路径（如 assets/docs/topic01/）把文件名统一并生成一份可直接替换的站内链接清单。
+        本 Topic-01 文档作为后续“电价统计、月度画像、价差分析与储能收益模型”的基础版本，将持续在此结构上滚动更新。
       </div>
     </section>
-
-    <!-- 新增卡片 7：HUPX 现货/日内市场规则类文件（查看） -->
-    <section>
-      <h2>HUPX 电力交易所：现货/日内市场规则类文件（查看）</h2>
-      <p class="muted">
-        说明：你提到的“Market Rules – Day-Ahead &amp; Intraday Markets”在新版体系中通常体现为 Market Rules + Annex/Procedures + Market Notices。
-      </p>
-
-      <ul>
-        <li>
-          <strong>《HUPX Market Rules 15.0 (ENG)｜交易所总规则（覆盖 DAM + IDM）》</strong>
-          <div class="links">
-            <a href="https://hupx.hu/sites/default/files/media/file/2025/07/HUPX%20Market%20Rules%2015.0%20ENG.pdf" target="_blank" rel="noopener">查看（PDF）</a>
-          </div>
-        </li>
-
-        <li>
-          <strong>《SDAC Fallback Manual｜日前耦合故障/回退流程手册（跨市场通用）》</strong>
-          <div class="links">
-            <!-- 如果你有更准确的官方直链，我可以替换到这里 -->
-            <a href="https://www.nemo-committee.eu/documents" target="_blank" rel="noopener">查看（目录页）</a>
-          </div>
-        </li>
-
-        <li>
-          <strong>《SIDC｜单一日内耦合（连续日内交易）相关说明（跨市场通用）》</strong>
-          <div class="links">
-            <a href="https://www.nemo-committee.eu/documents" target="_blank" rel="noopener">查看（目录页）</a>
-          </div>
-        </li>
-
-        <li>
-          <strong>《HUPX Market Notice：HUPX-MN-IDM-2025-0022（示例：日内订单参数变更）》</strong>
-          <div class="links">
-            <a href="https://hupx.hu/sites/default/files/media/file/2025/08/HUPX-MN-IDM-2025-0022%20-%20Modification%20of%20Intraday%20Market%20order%20bandwidths.pdf" target="_blank" rel="noopener">查看（PDF）</a>
-          </div>
-        </li>
-      </ul>
-
-      <div class="note">
-        下一步：我可以把 HUPX 官网“Rules / Documents / Market Notices”页面里的所有相关文件（含可公开下载的 Annex/Procedure）自动扫一遍，
-        输出“文件名（中/英）+ 用途 + 链接 + 是否需要登录”的完整列表，然后你再挑要挂到本站内的那一批。
-      </div>
-    </section>
-
 
   </main>
 
