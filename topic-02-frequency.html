@@ -1,1 +1,590 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Topic 02｜匈牙利调频（辅助服务/平衡市场）相关情况</title>
+  <style>
+    :root{
+      --bg0:#0b1220;
+      --bg1:#0f1b32;
+      --card:#0f1a2d;
+      --card2:#101f36;
+      --border:rgba(255,255,255,.08);
+      --muted:rgba(255,255,255,.70);
+      --muted2:rgba(255,255,255,.55);
+      --text:rgba(255,255,255,.92);
+      --accent:#6ee7ff;
+      --accent2:#8b5cf6;
+      --shadow:0 18px 40px rgba(0,0,0,.35);
+      --radius:18px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      color:var(--text);
+      background:
+        radial-gradient(1200px 600px at 15% 12%, rgba(110,231,255,.14), transparent 55%),
+        radial-gradient(900px 520px at 88% 20%, rgba(139,92,246,.16), transparent 55%),
+        radial-gradient(900px 520px at 50% 92%, rgba(110,231,255,.10), transparent 55%),
+        linear-gradient(180deg, var(--bg0), var(--bg1));
+      min-height:100vh;
+    }
+    a{color:inherit}
+    .wrap{
+      width:min(1080px, calc(100% - 40px));
+      margin:0 auto;
+      padding:28px 0 56px;
+    }
+
+    /* Header bar (match price page vibe: number+title left, button right) */
+    .topbar{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      padding:14px 16px;
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      background:rgba(16,31,54,.55);
+      box-shadow:var(--shadow);
+      backdrop-filter: blur(10px);
+      position:sticky;
+      top:14px;
+      z-index:20;
+    }
+    .titleRow{
+      display:flex;
+      align-items:baseline;
+      gap:12px;
+      min-width:0;
+    }
+    .topicNo{
+      font-weight:800;
+      letter-spacing:.5px;
+      padding:6px 10px;
+      border-radius:999px;
+      border:1px solid var(--border);
+      background:rgba(255,255,255,.04);
+      white-space:nowrap;
+    }
+    .topicTitle{
+      font-size:16px;
+      font-weight:750;
+      line-height:1.2;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+    .subTitle{
+      display:block;
+      margin-top:4px;
+      font-size:12px;
+      color:var(--muted2);
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:10px 12px;
+      border-radius:14px;
+      border:1px solid var(--border);
+      background:linear-gradient(135deg, rgba(110,231,255,.16), rgba(139,92,246,.14));
+      color:var(--text);
+      text-decoration:none;
+      font-weight:700;
+      box-shadow:0 10px 26px rgba(0,0,0,.25);
+      transition:transform .15s ease, filter .15s ease;
+      white-space:nowrap;
+    }
+    .btn:hover{transform:translateY(-1px); filter:brightness(1.08)}
+    .btn:active{transform:translateY(0)}
+    .btn svg{width:16px;height:16px;opacity:.92}
+
+    /* Cards */
+    .grid{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap:14px;
+      margin-top:16px;
+    }
+    .card{
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      background:rgba(15,26,45,.70);
+      box-shadow:var(--shadow);
+      backdrop-filter: blur(10px);
+      overflow:hidden;
+    }
+    .cardHd{
+      padding:14px 16px;
+      border-bottom:1px solid var(--border);
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:12px;
+      background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,0));
+    }
+    .cardHd h2{
+      margin:0;
+      font-size:14px;
+      font-weight:800;
+      letter-spacing:.2px;
+    }
+    .cardHd p{
+      margin:6px 0 0;
+      font-size:12px;
+      color:var(--muted2);
+      line-height:1.55;
+    }
+    .badge{
+      font-size:12px;
+      font-weight:800;
+      padding:6px 10px;
+      border-radius:999px;
+      border:1px solid var(--border);
+      background:rgba(255,255,255,.04);
+      color:rgba(255,255,255,.85);
+      white-space:nowrap;
+      height:fit-content;
+      margin-top:2px;
+    }
+    .cardBd{
+      padding:14px 16px 4px;
+    }
+
+    /* Accordion items */
+    .qa{
+      border:1px solid var(--border);
+      border-radius:16px;
+      background:rgba(16,31,54,.55);
+      overflow:hidden;
+      margin-bottom:10px;
+    }
+    .qaBtn{
+      width:100%;
+      text-align:left;
+      border:0;
+      background:transparent;
+      color:var(--text);
+      padding:12px 12px;
+      cursor:pointer;
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:10px;
+    }
+    .qaBtn .q{
+      font-weight:800;
+      font-size:13px;
+      line-height:1.45;
+      margin:0;
+    }
+    .qaBtn .meta{
+      font-size:12px;
+      color:var(--muted2);
+      font-weight:700;
+      margin-top:6px;
+    }
+    .chev{
+      width:18px;height:18px;
+      flex:0 0 auto;
+      opacity:.85;
+      transition:transform .2s ease;
+      margin-top:2px;
+    }
+    .qa.open .chev{transform:rotate(180deg)}
+    .qaPanel{
+      max-height:0;
+      overflow:hidden;
+      transition:max-height .25s ease;
+      border-top:1px solid var(--border);
+      background:rgba(0,0,0,.08);
+    }
+    .qa.open .qaPanel{max-height:1400px}
+    .qaPanel .inner{
+      padding:12px 12px 14px;
+      color:rgba(255,255,255,.86);
+      font-size:13px;
+      line-height:1.75;
+    }
+    .muted{color:var(--muted)}
+    .hr{
+      height:1px;
+      background:var(--border);
+      margin:10px 0 12px;
+    }
+    .k{
+      display:inline-block;
+      padding:2px 8px;
+      border:1px solid var(--border);
+      border-radius:999px;
+      background:rgba(255,255,255,.04);
+      font-weight:800;
+      font-size:12px;
+      margin:0 6px 6px 0;
+      color:rgba(255,255,255,.86);
+    }
+    .list{
+      margin:8px 0 0 18px;
+      padding:0;
+    }
+    .list li{margin:6px 0}
+    .note{
+      font-size:12px;
+      color:var(--muted2);
+      margin:10px 0 0;
+      line-height:1.6;
+    }
+
+    /* Footer */
+    .footer{
+      margin-top:14px;
+      padding:12px 2px 0;
+      color:var(--muted2);
+      font-size:12px;
+      line-height:1.6;
+      text-align:center;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+
+    <!-- Sticky header (same style logic as price page) -->
+    <div class="topbar">
+      <div style="min-width:0">
+        <div class="titleRow">
+          <div class="topicNo">Topic 02</div>
+          <div style="min-width:0">
+            <div class="topicTitle">匈牙利调频（辅助服务/平衡市场）相关情况</div>
+            <span class="subTitle">匈牙利储能项目｜调频产品、技术门槛、计量要求、价格结构与条款定位</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 可以把 href 改成首页或目录页地址 -->
+      <a class="btn" href="../index_g1.html" title="返回目录 / 进入主题列表">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M10 6l-6 6 6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M4 12h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        进入主题
+      </a>
+    </div>
+
+    <div class="grid">
+
+      <!-- Note / Remark -->
+      <section class="card">
+        <div class="cardHd">
+          <div>
+            <h2>备注｜文档结构说明与核验提醒</h2>
+            <p>本页内容为研究底稿与规则索引：先描述市场与关键问题，再给出官方定位线索与来源渠道，后续可据此进行原文逐条检验与更新。</p>
+          </div>
+          <div class="badge">重要</div>
+        </div>
+        <div class="cardBd">
+          <div class="qa open">
+            <button class="qaBtn" type="button">
+              <div>
+                <div class="q">本文档分成 3 个部分（建议先读第 1 部分，再用第 2/3 部分做定位与核验）</div>
+                <div class="meta">结构说明 / 校验提醒</div>
+              </div>
+              <svg class="chev" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+            <div class="qaPanel">
+              <div class="inner">
+                <p><span class="k">第 1 部分</span>对匈牙利调频/平衡市场作总体描述，并对若干关键问题进行说明（产品类型、技术资质/测试、计量要求、价格与结算逻辑等）。</p>
+                <p><span class="k">第 2 部分</span>列出与关键结论相关的官方导则/规则/模板的定位线索（字段名称、条款点、附件编号等），便于后续快速查找核对。</p>
+                <p><span class="k">第 3 部分</span>提供下载或查询渠道参考（后期需要检验），用于后续取得原文并逐条校验与更新。</p>
+                <div class="hr"></div>
+                <p class="note"><b>重要说明：</b>本文尽量采用“官方监管/官方规则 &gt; 官方模板 &gt; 行业引用定位”的证据链进行归纳；部分关键规则（尤其涉及 <b>ÜSZ 9.1 附件</b>与 <b>NÜKSZ 3.1</b> 原文条款）需在取得原文后补齐页码/逐条引用。本页应视为“研究底稿/定位索引”。</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Part 1 -->
+      <section class="card">
+        <div class="cardHd">
+          <div>
+            <h2>1．主要问题与解答</h2>
+            <p>聚焦：FCR / aFRR / mFRR（以及 RR/IGCC）、技术门槛（Akkreditáció）、计量与通信、容量费/能量费/罚则。</p>
+          </div>
+          <div class="badge">Part 1</div>
+        </div>
+
+        <div class="cardBd">
+
+          <!-- 1.1 -->
+          <div class="qa">
+            <button class="qaBtn" type="button">
+              <div>
+                <div class="q">1.1 匈牙利调频/平衡产品类型：FCR / aFRR / mFRR（以及 RR/IGCC）</div>
+                <div class="meta">结论 + 依据口径（监管字段）</div>
+              </div>
+              <svg class="chev" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+            <div class="qaPanel">
+              <div class="inner">
+                <ul class="list">
+                  <li>在匈牙利的容量市场/数据体系里，FCR / aFRR / mFRR 是明确作为“容量市场名称”被记录与上报的（监管数据字段）。官方表格里直接有字段：<br/>
+                    “Kapacitás piac neve (FCR/aFRR/mFRR)”（容量市场名称）+ Kapacitás Ár (Ft/MW/h)（容量价）+ Tender megnevezése（招标名称）。<span class="muted">（Magyar Közlöny）</span>
+                  </li>
+                  <li>同一套官方口径里也区分了 aFRR/mFRR 的激活能量（aktivált kiegyenlítő szabályozási energia），并把它们作为需要报送的结算数据。<span class="muted">（Magyar Közlöny）</span></li>
+                </ul>
+                <div class="hr"></div>
+                <p><b>结论：</b>匈牙利至少同时存在（并被监管数据体系正式覆盖）FCR 容量采购、aFRR 容量/能量（激活）、mFRR 容量/能量（激活），且它们的价格口径包含容量价与能量价。</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- 1.2 -->
+          <div class="qa">
+            <button class="qaBtn" type="button">
+              <div>
+                <div class="q">1.2 “里程/性能要求”如何落地：Akkreditáció（技术资质/测试）+ 计量/通信</div>
+                <div class="meta">进入市场的“硬门槛”与工程落点</div>
+              </div>
+              <svg class="chev" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+            <div class="qaPanel">
+              <div class="inner">
+                <p class="muted">核心：储能要进市场，到底要满足什么性能、要做哪些测试、要配哪些计量。</p>
+
+                <p><b>（A）MAVIR 的 “Akkreditáció（技术资质/测试）”是硬门槛</b></p>
+                <ul class="list">
+                  <li>多个匈牙利行业解读一致指出：参与系统服务/平衡服务前，MAVIR 会通过 akkreditáció / műszaki minősítés（技术认证/测试）确认技术能力，并且测试细节在《Üzemi Szabályzat（ÜSZ）》的 9.1 附件。<span class="muted">（Voltrack）</span></li>
+                  <li>监管侧的数据体系里也单列了 “Akkreditációs eljárások（认证程序）”作为定期数据报送主题（说明其为监管关注项）。<span class="muted">（net.jogtar.hu）</span></li>
+                </ul>
+
+                <p><b>（B）计量/分表</b></p>
+                <ul class="list">
+                  <li>在官方《Elosztói Szabályzat（配网规则）》里明确写到：对于“被要求或希望提供 aFRR/mFRR 服务的用户物理单元与储能”，依据 ÜSZ 相关条款，需要为电能计量设置 “külön mérés（单独计量/独立电表）”。<span class="muted">（mvmhalozat.hu）</span></li>
+                </ul>
+
+                <p><b>（C）具体性能例子：mFRR 12.5 的 “12.5 分钟”</b></p>
+                <ul class="list">
+                  <li>行业材料指出：mFRR12,5 的 “12.5”意味着从指令到目标值完全激活时间不得超过 12.5 分钟，并定位到 ÜSZ 9.1 附件 7/a 点。<span class="muted">（EQUANS Magyarország）</span></li>
+                </ul>
+
+                <div class="hr"></div>
+                <p><b>可落地结论：</b>在匈牙利，要进 aFRR/mFRR（更不用说 FCR），不是“注册就能卖”，而是：<br/>
+                  先满足计量/通信/控制等基础要求 → 走 MAVIR 的 Akkreditáció（ÜSZ 9.1 附件定义测试与要求）→ 才能参与容量/能量交易与结算。<br/>
+                  其中 aFRR/mFRR/储能很大概率需要“单独计量（külön mérés）”。</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- 1.3 -->
+          <div class="qa">
+            <button class="qaBtn" type="button">
+              <div>
+                <div class="q">1.3 调频价格：容量费 / 能量费 / 罚则（匈牙利口径对应）</div>
+                <div class="meta">收入三段式：容量费 + 激活能量 + 违约/扣款</div>
+              </div>
+              <svg class="chev" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+            <div class="qaPanel">
+              <div class="inner">
+                <p><b>（1）容量费（Kapacitás Ár，Ft/MW/h）</b></p>
+                <ul class="list">
+                  <li>官方表格字段明确：容量价单位是 Ft/MW/h，并按 FCR/aFRR/mFRR 分类记录，同时记录投标 MW、锁定 MW、招标名称等。<span class="muted">（Magyar Közlöny）</span></li>
+                </ul>
+
+                <p><b>（2）能量费（Kiegyenlítő energia ára，HUF/kWh）</b></p>
+                <ul class="list">
+                  <li>官方报送表格把 “Kiegyenlítő energia ára (HUF/kWh)”作为核心字段，并明确区分 Pozitív mFRR aktivált、Pozitív aFRR aktivált 等。<span class="muted">（Magyar Közlöny）</span></li>
+                  <li>另一个官方报送模板“填表说明”指出：报告中的能量价遵循 EBGL 的方向约定，并用于 MAVIR 的全国平衡能量结算。<span class="muted">（njt.hu）</span></li>
+                </ul>
+
+                <p><b>（3）罚则/扣款（非履约/不可用/偏差）规则位置</b></p>
+                <p class="muted">硬条款通常落在 NÜKSZ（BSP/BRP 规则）与 MAVIR 的招标文件/合同条款中。</p>
+                <ul class="list">
+                  <li>NÜKSZ 3.1.45：被引用为“mFRR 与 RR 的可用与激活规则”；激活按日内提交的能量价 merit order 执行，只有技术原因可偏离。<span class="muted">（Voltrack）</span></li>
+                  <li>NÜKSZ 3.1.46 / 3.1.47：被引用为“mFRR 与 RR 容量费结算规则”，MAVIR 先给出预结算基础数据，最终按条款结算，且按月结算。<span class="muted">（Voltrack）</span></li>
+                </ul>
+
+                <div class="hr"></div>
+                <p><b>可落地结论：</b>匈牙利的调频收入至少两条线：<br/>
+                  • 容量费（Ft/MW/h）：通过 MAVIR 的容量招标锁定；<br/>
+                  • 能量费（HUF/kWh）：激活后按 aFRR/mFRR 实际能量结算；<br/>
+                  • 罚则/扣款：通常由 NÜKSZ + MAVIR 合同/招标条款约束；关键定位点在 NÜKSZ 3.1.45–3.1.47。</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Part 2 -->
+      <section class="card">
+        <div class="cardHd">
+          <div>
+            <h2>2．具体官方文件及相关章节明细</h2>
+            <p>证据链（从强到弱）：官方监管/官方规则 ＞ 官方模板 ＞ 行业引用定位。</p>
+          </div>
+          <div class="badge">Part 2</div>
+        </div>
+        <div class="cardBd">
+
+          <div class="qa">
+            <button class="qaBtn" type="button">
+              <div>
+                <div class="q">A．官方监管数据与模板（字段定位）</div>
+                <div class="meta">用于锁定：容量费口径 / 能量价口径 / 产品分类</div>
+              </div>
+              <svg class="chev" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+            <div class="qaPanel">
+              <div class="inner">
+                <p><b>1）平衡/调频能量数据报送模板</b></p>
+                <ul class="list">
+                  <li>字段： “Kiegyenlítő energia ára (HUF/kWh)”</li>
+                  <li>字段： “Pozitív mFRR aktivált … / Pozitív aFRR aktivált …”</li>
+                  <li>用途：证明能量价口径与 aFRR/mFRR 激活分类为官方口径。<span class="muted">（Magyar Közlöny）</span></li>
+                </ul>
+
+                <p><b>2）容量市场数据报送模板</b></p>
+                <ul class="list">
+                  <li>字段： “Kapacitás piac neve (FCR/aFRR/mFRR)”</li>
+                  <li>字段： “Kapacitás Ár (Ft/MW/h)”</li>
+                  <li>字段： “Beadott pályázat MW / Lekötött kapacitás MW / Tender megnevezése”</li>
+                  <li>用途：证明容量费口径、产品拆分与招标维度为官方口径。<span class="muted">（Magyar Közlöny）</span></li>
+                </ul>
+
+                <p><b>3）1/2023 (IV.5) MEKH rendelet（MEKH 数据报送法令）</b></p>
+                <ul class="list">
+                  <li>条目：“Akkreditációs eljárások”等数据报送项（认证为监管关注事项）。<span class="muted">（net.jogtar.hu）</span></li>
+                  <li>用途：作为内部报告“监管制度依据”的锚点。</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="qa">
+            <button class="qaBtn" type="button">
+              <div>
+                <div class="q">B．官方电网规则（配网规则中的计量要求）</div>
+                <div class="meta">工程落点：külön mérés（单独计量/独立电表）</div>
+              </div>
+              <svg class="chev" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+            <div class="qaPanel">
+              <div class="inner">
+                <p><b>4）Elosztói Szabályzat（配网规则）— 9.8.2</b></p>
+                <ul class="list">
+                  <li>条款点：9.8.2（对 aFRR/mFRR 服务（akkreditáció）义务或自愿提供者，需满足 ÜSZ 条款并建设单独计量）。<span class="muted">（mvmhalozat.hu）</span></li>
+                  <li>用途：EPC/并网设计阶段必须落实的工程要求。</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="qa">
+            <button class="qaBtn" type="button">
+              <div>
+                <div class="q">C．MAVIR / NÜKSZ / ÜSZ 的条款定位线索（待拿到原文后逐条核验）</div>
+                <div class="meta">用于后续“对原文逐条补齐页码与引用”</div>
+              </div>
+              <svg class="chev" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+            <div class="qaPanel">
+              <div class="inner">
+                <p><b>5）Üzemi Szabályzat（ÜSZ）— 9.1 附件：Akkreditáció / 技术测试与要求</b></p>
+                <ul class="list">
+                  <li>行业引用指向：ÜSZ 9.1 Melléklet 包含 akkreditáció 细节。<span class="muted">（Voltrack）</span></li>
+                  <li>后续应提取：响应/激活时间、控制精度、通信链路、测试流程、合格标准、不合格处理等。</li>
+                </ul>
+
+                <p><b>6）NÜKSZ — 3.1.45 / 3.1.46 / 3.1.47</b></p>
+                <ul class="list">
+                  <li>3.1.45：mFRR/RR 可用与激活；按能量报价排序（仅技术原因可偏离）。<span class="muted">（Voltrack）</span></li>
+                  <li>3.1.46 / 3.1.47：mFRR/RR 容量费结算规则；预结算数据→最终结算；按月结算。<span class="muted">（Voltrack）</span></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Part 3 -->
+      <section class="card">
+        <div class="cardHd">
+          <div>
+            <h2>3．参考文档出处（来源/引用页）</h2>
+            <p>提供下载或查询渠道参考（后期需要检验）。可以在此替换为实际 URL 或内部文档编号。</p>
+          </div>
+          <div class="badge">Part 3</div>
+        </div>
+        <div class="cardBd">
+          <div class="qa open">
+            <button class="qaBtn" type="button">
+              <div>
+                <div class="q">来源清单（可用于你们 Topic 页面底部的“引用/下载”区）</div>
+                <div class="meta">建议后续补：文件版本号 / 发布日期 / 下载链接</div>
+              </div>
+              <svg class="chev" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+            <div class="qaPanel">
+              <div class="inner">
+                <ul class="list">
+                  <li>官方容量市场数据模板（含 FCR/aFRR/mFRR、容量价 Ft/MW/h、投标/锁定容量、招标名称）。<span class="muted">（Magyar Közlöny）</span></li>
+                  <li>官方平衡/调频能量数据模板（含 aFRR/mFRR 激活能量与能量价 HUF/kWh；字段解释）。<span class="muted">（Magyar Közlöny）</span></li>
+                  <li>MEKH 数据报送法令：1/2023 (IV.5) MEKH rendelet（含 “Akkreditációs eljárások”等条目）。<span class="muted">（net.jogtar.hu）</span></li>
+                  <li>《Elosztói Szabályzat（配网规则）》：aFRR/mFRR（akkreditáció）与储能/物理单元的“单独计量（külön mérés）”。<span class="muted">（mvmhalozat.hu）</span></li>
+                  <li>NÜKSZ 条款号定位（3.1.45–3.1.47）与其涵盖内容（激活/结算链条）的行业引用（用于后续快速定位原文）。<span class="muted">（Voltrack）</span></li>
+                  <li>ÜSZ 9.1 附件作为 akkreditáció 技术测试来源的行业引用（用于后续快速定位原文）。<span class="muted">（Voltrack）</span></li>
+                  <li>mFRR12,5 “12.5 分钟完全激活时间”定位到 ÜSZ 9.1 附件 7/a 点的引用。<span class="muted">（EQUANS Magyarország）</span></li>
+                </ul>
+                <p class="note"><b>研究提醒：</b>请在拿到 ÜSZ 9.1 附件与 NÜKSZ 3.1 全文后，在此基础上做逐条核验，并补齐“条款页码 + 原文截图/摘录 + 版本日期”。</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+    <div class="footer">
+      © 匈牙利储能项目｜Topic 02｜调频（辅助服务/平衡市场）研究页（与 Price 页同风格卡片/FAQ 结构）
+    </div>
+
+  </div>
+
+  <script>
+    // Simple accordion (same feel as FAQ)
+    document.querySelectorAll('.qaBtn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const box = btn.closest('.qa');
+        box.classList.toggle('open');
+      });
+    });
+  </script>
+</body>
+</html>
 
