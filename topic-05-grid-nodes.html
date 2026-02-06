@@ -1,1 +1,473 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Topic05｜电网结构与节点网络｜并网节点/可用容量/拥塞信号/数据获取路径｜匈牙利储能项目</title>
+
+  <style>
+    body{
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, "Noto Sans", "Helvetica Neue", sans-serif;
+      line-height: 1.7;
+      margin: 0;
+      color:#111;
+
+      /* === 淡背景图（不抢内容）=== */
+      background:
+        linear-gradient(rgba(255,255,255,0.30), rgba(255,255,255,0.30)),
+        url("assets/bg.png") center / cover no-repeat fixed;
+    }
+
+    header{
+      background:#0b1220;
+      color:#fff;
+      padding: 44px 20px;
+    }
+
+    .wrap{max-width: 980px; margin: 0 auto;}
+
+    h1{margin:0 0 10px 0; font-size: 34px; letter-spacing: .2px;}
+    .subhead{margin:0; font-size: 16px; opacity:.9;}
+
+    main{padding: 22px 20px 60px;}
+
+    section{
+      background:#fff;
+      border: 1px solid #eaeaea;
+      border-radius: 14px;
+      padding: 22px;
+      margin: 16px 0;
+      box-shadow: 0 1px 2px rgba(0,0,0,.04);
+    }
+
+    h2{margin: 0 0 10px 0; font-size: 22px;}
+    h3{margin: 14px 0 6px; font-size: 18px;}
+    p{margin: 0;}
+    ul{margin: 8px 0 0 20px;}
+    ol{margin: 8px 0 0 20px;}
+    li{margin: 6px 0;}
+
+    .note{
+      background:#f3f6ff;
+      border: 1px solid #dfe7ff;
+      padding: 12px 14px;
+      border-radius: 12px;
+      margin-top: 10px;
+      color:#1f2a44;
+    }
+
+    .links a{
+      display:inline-block;
+      margin: 6px 10px 0 0;
+      padding: 8px 12px;
+      border:1px solid #e6e6e6;
+      border-radius: 999px;
+      text-decoration:none;
+      color:#111;
+      background:#fff;
+    }
+    .links a:hover{border-color:#cfcfcf;}
+
+    /* 标题栏：左(序号+标题) 右(按钮) 同一行 */
+    .topic-head{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+    .title-left{
+      display:flex;
+      align-items:center;
+      gap: 10px;
+      min-width: 0;
+    }
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      font-size: 12px;
+      font-weight: 800;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background:#f3f6ff;
+      border: 1px solid #dfe7ff;
+      color:#1d4ed8;
+      flex: 0 0 auto;
+    }
+    .title{
+      font-size: 22px;
+      font-weight: 800;
+      line-height: 1.25;
+      margin: 0;
+      color:#111;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding: 9px 12px;
+      border-radius: 999px;
+      text-decoration:none;
+      background:#2563eb;
+      color:#fff;
+      font-weight: 700;
+      border:1px solid rgba(0,0,0,.04);
+      flex: 0 0 auto;
+      white-space: nowrap;
+    }
+    .btn:hover{filter: brightness(0.96);}
+
+    .muted{color:#666;}
+
+    footer{
+      padding: 18px 20px 30px;
+      color:#666;
+      text-align:center;
+    }
+
+    table{
+      width:100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+      font-size: 14px;
+    }
+    th, td{
+      border:1px solid #eee;
+      padding:10px;
+      vertical-align: top;
+      text-align:left;
+    }
+    th{
+      background:#fafafa;
+      font-weight:800;
+    }
+    code{
+      background:#f6f6f6;
+      border:1px solid #eee;
+      padding:2px 6px;
+      border-radius: 6px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono","Courier New", monospace;
+      font-size: 12px;
+    }
+
+    @media (max-width: 760px){
+      header{padding: 38px 20px;}
+      h1{font-size:30px;}
+      .title{font-size:20px;}
+      section{padding: 18px;}
+      table{font-size: 13px;}
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="wrap" id="top">
+      <h1>Topic05｜匈牙利电力储能：电网结构与节点网络</h1>
+      <p class="subhead">关注重点：并网节点｜可用容量｜拥塞信号｜数据获取路径</p>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="links" style="margin: 6px 0 14px;">
+      <a href="index_g1.html">← 返回首页</a>
+    </div>
+
+    <!-- 卡片 1：导航 -->
+    <section>
+      <div class="topic-head">
+        <div class="title-left">
+          <span class="pill">01</span>
+          <h2 class="title">目录与使用说明</h2>
+        </div>
+        <a class="btn" href="#part1">跳到第一部分 ↓</a>
+      </div>
+
+      <ul>
+        <li><a href="#part1">第一部分｜并网节点（Grid Connection Node）</a></li>
+        <li><a href="#part2">第二部分｜可用容量（Available Connection Capacity）</a></li>
+        <li><a href="#part3">第三部分｜拥塞信号（Congestion Signals）</a></li>
+        <li><a href="#part4">第四部分｜数据获取路径（How You Actually Get the Data）</a></li>
+      </ul>
+
+      <div class="note">
+        说明：本文件用于“首单项目”快速筛选与尽调对齐。默认原则：先确认并网节点与可用容量，再推进EPC与商业模型；若节点存在拥塞与运行约束，需在收益测算中显式折扣。
+      </div>
+    </section>
+
+    <!-- 第一部分 -->
+    <section id="part1">
+      <div class="topic-head">
+        <div class="title-left">
+          <span class="pill">A</span>
+          <h2 class="title">第一部分｜并网节点（Grid Connection Node）</h2>
+        </div>
+        <a class="btn" href="#part2">跳到可用容量 ↓</a>
+      </div>
+
+      <h3>1. 并网节点是什么（项目视角定义）</h3>
+      <p>
+        并网节点不是一块地，也不是行政区，而是：<br/>
+        <strong>储能系统通过升压变压器，实际接入电网的那个变电站 / 母线 / 回路</strong>
+      </p>
+      <p style="margin-top:10px;">在匈牙利，绝大多数 1–10MW 储能项目：</p>
+      <ul>
+        <li>接在 中压配电网（10–35kV）</li>
+        <li>通过某一座 110/20kV 或 35/20kV 变电站并网</li>
+      </ul>
+
+      <h3>2. 为什么“节点”比“土地”更重要</h3>
+      <ul>
+        <li>接 A 节点 → 6–9 个月可并网</li>
+        <li>接 C 节点 → 技术上可行，但永远排队</li>
+      </ul>
+      <p style="margin-top:8px;">节点直接决定：</p>
+      <ul>
+        <li>是否能并网</li>
+        <li>是否限功率</li>
+        <li>是否需要电网扩容</li>
+        <li>是否具备参与调频 / 辅助服务的技术条件</li>
+      </ul>
+      <div class="note">
+        👉 在尽调顺序上：节点 &gt; 电价 &gt; EPC &gt; 土地价格
+      </div>
+
+      <h3>3. 项目筛选时的节点优先级</h3>
+      <ul>
+        <li><strong>优先：</strong>
+          <ul>
+            <li>工业园区主变</li>
+            <li>老工业区 / 负荷下降区</li>
+            <li>110/20kV 变电站周边</li>
+          </ul>
+        </li>
+        <li><strong>谨慎：</strong>
+          <ul>
+            <li>新开发区</li>
+            <li>光伏集中接入区域</li>
+          </ul>
+        </li>
+        <li><strong>回避：</strong>
+          <ul>
+            <li>农业末端</li>
+            <li>长馈线、弱网区域</li>
+          </ul>
+        </li>
+      </ul>
+    </section>
+
+    <!-- 第二部分 -->
+    <section id="part2">
+      <div class="topic-head">
+        <div class="title-left">
+          <span class="pill">B</span>
+          <h2 class="title">第二部分｜可用容量（Available Connection Capacity）</h2>
+        </div>
+        <a class="btn" href="#part3">跳到拥塞信号 ↓</a>
+      </div>
+
+      <h3>1. 可用容量指什么</h3>
+      <p>
+        可用容量 ≠ 变压器额定容量<br/>
+        而是：<br/>
+        在当前网络结构与运行约束下，<strong>DSO 实际允许并入的最大有功功率（MW）</strong>
+      </p>
+      <p class="muted" style="margin-top:10px;">
+        注：这里的 DSO 指配电网运营商；TSO 为国家输电系统运营商（MAVIR）。
+      </p>
+
+      <h3>2. 可用容量的三种“状态”</h3>
+      <table>
+        <thead>
+          <tr>
+            <th style="width:22%;">状态</th>
+            <th>实际含义</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>明确可用容量</td>
+            <td>最理想，可直接推进</td>
+          </tr>
+          <tr>
+            <td>理论可用</td>
+            <td>需技术评估，存在不确定性</td>
+          </tr>
+          <tr>
+            <td>需扩容</td>
+            <td>时间 + 成本不可控</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="note">
+        ⚠️ 注意：<br/>
+        “grid connection possible”<br/>
+        “capacity might be available”<br/>
+        都不等于明确可用容量。
+      </div>
+
+      <h3>3. 储能项目特别要注意的点</h3>
+      <ul>
+        <li>储能是 <strong>双向功率设备</strong>
+          <ul>
+            <li>充电 = 负荷</li>
+            <li>放电 = 发电</li>
+          </ul>
+        </li>
+        <li>很多节点：
+          <ul>
+            <li>放电 OK</li>
+            <li>充电受限</li>
+          </ul>
+        </li>
+      </ul>
+      <div class="note">
+        👉 你必须确认的是：<strong>可双向满功率运行的容量是多少？</strong>
+      </div>
+
+      <h3>4. 首单项目的安全策略</h3>
+      <ul>
+        <li>宁可做 0.5–1MW</li>
+        <li>也不要押在 “未来可能释放容量”</li>
+      </ul>
+      <div class="note">
+        首单的目标是：<strong>确定性并网</strong>，而不是容量最大化。
+      </div>
+    </section>
+
+    <!-- 第三部分 -->
+    <section id="part3">
+      <div class="topic-head">
+        <div class="title-left">
+          <span class="pill">C</span>
+          <h2 class="title">第三部分｜拥塞信号（Congestion Signals）</h2>
+        </div>
+        <a class="btn" href="#part4">跳到数据获取路径 ↓</a>
+      </div>
+
+      <h3>1. 什么是拥塞信号</h3>
+      <p>
+        拥塞信号 = 电网在某些节点或时段“不想你发电 / 用电”
+      </p>
+      <p style="margin-top:10px;">表现形式包括：</p>
+      <ul>
+        <li>限功率运行</li>
+        <li>强制削减</li>
+        <li>动态调度限制</li>
+      </ul>
+
+      <h3>2. 拥塞对储能的真实影响</h3>
+      <table>
+        <thead>
+          <tr>
+            <th style="width:28%;">场景</th>
+            <th>后果</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>放电时段拥塞</td>
+            <td>高价时段卖不出去</td>
+          </tr>
+          <tr>
+            <td>充电时段拥塞</td>
+            <td>低价电充不满</td>
+          </tr>
+          <tr>
+            <td>双向拥塞</td>
+            <td>储能模型直接失效</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="note">
+        👉 拥塞 = IRR 的隐形杀手
+      </div>
+
+      <h3>3. 如何“间接”识别拥塞节点</h3>
+      <p class="muted">即便拿不到内部数据，也可以通过以下信号判断节点是否已接近运行边界：</p>
+      <ul>
+        <li>周边光伏密度</li>
+        <li>是否频繁限发</li>
+        <li>DSO 是否强调 “operational constraints”</li>
+        <li>是否要求自费装额外保护或监控系统</li>
+      </ul>
+
+      <h3>4. 早期项目结论</h3>
+      <ul>
+        <li>不赌拥塞套利</li>
+        <li>优先选择：结构稳定、运行约束少、不是“热点节点”的位置</li>
+      </ul>
+    </section>
+
+    <!-- 第四部分 -->
+    <section id="part4">
+      <div class="topic-head">
+        <div class="title-left">
+          <span class="pill">D</span>
+          <h2 class="title">第四部分｜数据获取路径（How You Actually Get the Data）</h2>
+        </div>
+        <a class="btn" href="#top">回到顶部 ↑</a>
+      </div>
+
+      <h3>1. 官方公开信息（宏观层）</h3>
+      <p class="muted">可用于方向判断，不能直接决策：</p>
+      <ul>
+        <li>国家输电网规划</li>
+        <li>区域新能源发展规划</li>
+        <li>历史限电 / 限发公告</li>
+      </ul>
+      <div class="note">
+        👉 只能告诉你：“哪里可能紧张”，不能告诉你：“这个点能不能接”
+      </div>
+
+      <h3>2. 项目级核心数据来源（关键）</h3>
+      <p>真正有用的数据，只有三个来源：</p>
+      <ol>
+        <li>DSO 的并网意见函（Grid Connection Opinion）</li>
+        <li>已有并网项目的实操反馈</li>
+        <li>EPC / 本地开发商的真实案例</li>
+      </ol>
+      <div class="note">
+        ⚠️ 顺序很重要：先 DSO，后 EPC，最后信中介
+      </div>
+
+      <h3>3. 必须要求对方提供的材料</h3>
+      <ul>
+        <li>接入点名称 / 编号</li>
+        <li>接入电压等级</li>
+        <li>明确可用容量（MW）</li>
+        <li>是否双向无限制</li>
+        <li>是否涉及扩容及责任方</li>
+      </ul>
+      <div class="note">
+        不给书面材料 = 信息不成立
+      </div>
+
+      <h3>4. 实操建议（非常重要）</h3>
+      <p class="muted">在现在这个阶段：</p>
+      <ul>
+        <li>不要自己“猜节点好坏”</li>
+        <li>把问题问到 DSO 必须给结论</li>
+      </ul>
+      <div class="note">
+        一句话原则：让电网公司做第一轮风控
+      </div>
+
+      <h3>5. 本篇小结</h3>
+      <ul>
+        <li>并网节点是储能项目的第一性问题</li>
+        <li>可用容量必须是明确、双向、书面</li>
+        <li>拥塞信号决定的是收益上限</li>
+        <li>数据获取必须以 DSO 为中心</li>
+      </ul>
+    </section>
+
+  </main>
+
+  <footer>
+    © 匈牙利储能项目 · Topic05｜电网结构与节点网络
+  </footer>
+</body>
+</html>
 
