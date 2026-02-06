@@ -1,1 +1,452 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Topic02｜土地：用地类型/转性/权属链条/许可顺序/红线｜匈牙利储能项目</title>
+
+  <style>
+    body{
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, "Noto Sans", "Helvetica Neue", sans-serif;
+      line-height: 1.7;
+      margin: 0;
+      color:#111;
+
+      /* === 淡背景图（不抢内容）=== */
+      background:
+        linear-gradient(rgba(255,255,255,0.30), rgba(255,255,255,0.30)),
+        url("assets/bg.png") center / cover no-repeat fixed;
+    }
+
+    header{
+      background:#0b1220;
+      color:#fff;
+      padding: 44px 20px;
+    }
+
+    .wrap{max-width: 980px; margin: 0 auto;}
+
+    h1{margin:0 0 10px 0; font-size: 34px; letter-spacing: .2px;}
+    .subhead{margin:0; font-size: 16px; opacity:.9;}
+
+    main{padding: 22px 20px 60px;}
+
+    section{
+      background:#fff;
+      border: 1px solid #eaeaea;
+      border-radius: 14px;
+      padding: 22px;
+      margin: 16px 0;
+      box-shadow: 0 1px 2px rgba(0,0,0,.04);
+    }
+
+    h2{margin: 0 0 10px 0; font-size: 22px;}
+    h3{margin: 14px 0 6px; font-size: 18px;}
+    p{margin: 0;}
+    ul{margin: 8px 0 0 20px;}
+    ol{margin: 8px 0 0 20px;}
+    li{margin: 6px 0;}
+
+    .note{
+      background:#f3f6ff;
+      border: 1px solid #dfe7ff;
+      padding: 12px 14px;
+      border-radius: 12px;
+      margin-top: 10px;
+      color:#1f2a44;
+    }
+
+    .links a{
+      display:inline-block;
+      margin: 6px 10px 0 0;
+      padding: 8px 12px;
+      border:1px solid #e6e6e6;
+      border-radius: 999px;
+      text-decoration:none;
+      color:#111;
+      background:#fff;
+    }
+    .links a:hover{border-color:#cfcfcf;}
+
+    /* 标题栏：左(序号+标题) 右(按钮) 同一行 */
+    .topic-head{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+    .title-left{
+      display:flex;
+      align-items:center;
+      gap: 10px;
+      min-width: 0;
+    }
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      font-size: 12px;
+      font-weight: 800;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background:#f3f6ff;
+      border: 1px solid #dfe7ff;
+      color:#1d4ed8;
+      flex: 0 0 auto;
+    }
+    .title{
+      font-size: 22px;
+      font-weight: 800;
+      line-height: 1.25;
+      margin: 0;
+      color:#111;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding: 9px 12px;
+      border-radius: 999px;
+      text-decoration:none;
+      background:#2563eb;
+      color:#fff;
+      font-weight: 700;
+      border:1px solid rgba(0,0,0,.04);
+      flex: 0 0 auto;
+      white-space: nowrap;
+    }
+    .btn:hover{filter: brightness(0.96);}
+
+    .muted{color:#666;}
+
+    footer{
+      padding: 18px 20px 30px;
+      color:#666;
+      text-align:center;
+    }
+
+    table{
+      width:100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+      font-size: 14px;
+    }
+    th, td{
+      border:1px solid #eee;
+      padding:10px;
+      vertical-align: top;
+      text-align:left;
+    }
+    th{
+      background:#fafafa;
+      font-weight:800;
+    }
+    code{
+      background:#f6f6f6;
+      border:1px solid #eee;
+      padding:2px 6px;
+      border-radius: 6px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono","Courier New", monospace;
+      font-size: 12px;
+    }
+
+    @media (max-width: 760px){
+      header{padding: 38px 20px;}
+      h1{font-size:30px;}
+      .title{font-size:20px;}
+      section{padding: 18px;}
+      table{font-size: 13px;}
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="wrap" id="top">
+      <h1>Topic02｜匈牙利储能：土地问题专项说明</h1>
+      <p class="subhead">聚焦：用地类型｜转性｜权属链条｜许可顺序｜红线</p>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="links" style="margin: 6px 0 14px;">
+      <a href="index_g1.html">← 返回首页</a>
+    </div>
+
+    <!-- 卡片 1：导航 -->
+    <section>
+      <div class="topic-head">
+        <div class="title-left">
+          <span class="pill">01</span>
+          <h2 class="title">目录与使用说明</h2>
+        </div>
+        <a class="btn" href="#part1">跳到第一部分 ↓</a>
+      </div>
+
+      <ul>
+        <li><a href="#part1">第一部分｜用地类型（Type of Land Use）</a></li>
+        <li><a href="#part2">第二部分｜用地转性（Land Re-zoning / Conversion）</a></li>
+        <li><a href="#part3">第三部分｜权属链条（Ownership Chain）</a></li>
+        <li><a href="#part4">第四部分｜许可顺序（Permitting Sequence）</a></li>
+        <li><a href="#part5">第五部分｜红线清单（Non-negotiable Red Lines）</a></li>
+      </ul>
+
+      <div class="note">
+        说明：本文件用于“首单项目”快速筛选与尽调对齐。若出现任何“红线”条目，默认一票否决，避免把并网/EPC/商业谈判推进到土地合规未确认的阶段。
+      </div>
+    </section>
+
+    <!-- 第一部分 -->
+    <section id="part1">
+      <div class="topic-head">
+        <div class="title-left">
+          <span class="pill">A</span>
+          <h2 class="title">第一部分｜用地类型（Type of Land Use）</h2>
+        </div>
+        <a class="btn" href="#part2">跳到用地转性 ↓</a>
+      </div>
+
+      <p class="muted">核心问题：这块地“理论上 &amp; 实操上”能不能建储能？</p>
+
+      <h3>1) 可接受用地类型（按优先级排序）</h3>
+
+      <h3>① 工业用地（Ipari terület）✅</h3>
+      <ul>
+        <li>储能电站最主流、最安全选项</li>
+        <li>工业园区、变电站周边、物流园常见</li>
+        <li>地方政府接受度最高</li>
+      </ul>
+
+      <h3>② 能源 / 基础设施用地（Energia / Közmű）✅</h3>
+      <ul>
+        <li>靠近电网节点</li>
+        <li>常见于变电站扩展区</li>
+        <li>用地说明中需允许 <code>energia létesítmény</code></li>
+      </ul>
+
+      <h3>③ 棕地（Brownfield）✅</h3>
+      <ul>
+        <li>原工厂、废弃工业设施</li>
+        <li>政策态度偏友好</li>
+        <li>可能涉及轻度环保核查，但可控</li>
+      </ul>
+
+      <h3>2) 高风险 / 不建议类型</h3>
+      <h3>❌ 农业用地（Mezőgazdasági）</h3>
+      <ul>
+        <li>法律上可转性，但：</li>
+        <ul>
+          <li>时间长</li>
+          <li>成本高</li>
+          <li>地方政府否决权极大</li>
+        </ul>
+        <li>👉 首单项目明确排除</li>
+      </ul>
+
+      <div class="note">
+        <strong>项目级结论（可直接写进投资决策文件）：</strong><br/>
+        首单储能项目仅接受“已明确为工业/能源用途的土地”，不以任何形式承担用地性质变更风险。
+      </div>
+    </section>
+
+    <!-- 第二部分 -->
+    <section id="part2">
+      <div class="topic-head">
+        <div class="title-left">
+          <span class="pill">B</span>
+          <h2 class="title">第二部分｜用地转性（Land Re-zoning / Conversion）</h2>
+        </div>
+        <a class="btn" href="#part3">跳到权属链条 ↓</a>
+      </div>
+
+      <p class="muted">核心问题：是否涉及“土地性质变更”？能不能碰？</p>
+
+      <h3>1) 转性的三种现实路径</h3>
+      <table>
+        <thead>
+          <tr>
+            <th style="width:14%;">路径</th>
+            <th style="width:38%;">情况</th>
+            <th style="width:22%;">周期</th>
+            <th>是否推荐</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>A</td>
+            <td>无需转性（工业 → 储能）</td>
+            <td>0–1 个月</td>
+            <td>✅ 强烈推荐</td>
+          </tr>
+          <tr>
+            <td>B</td>
+            <td>工业地轻微规划调整</td>
+            <td>3–6 个月</td>
+            <td>⚠ 可接受</td>
+          </tr>
+          <tr>
+            <td>C</td>
+            <td>农地 → 工业</td>
+            <td>6–12+ 个月</td>
+            <td>❌ 不建议</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>2) 农地转性的隐性风险（很多卖方不会说）</h3>
+      <ul>
+        <li>地方政府完全自由裁量</li>
+        <li>农地保护政策变化不可预测</li>
+        <li>转性未完成前：</li>
+        <ul>
+          <li>银行不放款</li>
+          <li>并网申请可能被冻结</li>
+        </ul>
+      </ul>
+
+      <div class="note">
+        <strong>项目级红线表述：</strong><br/>
+        任何涉及农业用地转性的项目，一律不进入首单项目评估清单。
+      </div>
+    </section>
+
+    <!-- 第三部分 -->
+    <section id="part3">
+      <div class="topic-head">
+        <div class="title-left">
+          <span class="pill">C</span>
+          <h2 class="title">第三部分｜权属链条（Ownership Chain）</h2>
+        </div>
+        <a class="btn" href="#part4">跳到许可顺序 ↓</a>
+      </div>
+
+      <p class="muted">核心问题：土地是不是“干净的”？谁是真正的决策人？</p>
+
+      <h3>1) 必须核查的三层权属文件</h3>
+
+      <h3>① 土地登记文件（Tulajdoni lap）</h3>
+      <ul>
+        <li>官方地籍文件</li>
+        <li>必查：</li>
+        <ul>
+          <li>所有人</li>
+          <li>抵押 / 查封 / 优先权</li>
+        </ul>
+      </ul>
+
+      <h3>② 历史权属链条（Ownership history）</h3>
+      <ul>
+        <li>是否存在：</li>
+        <ul>
+          <li>国有转私有遗留问题</li>
+          <li>家族内部纠纷</li>
+        </ul>
+      </ul>
+
+      <h3>③ 实际控制人（UBO）</h3>
+      <ul>
+        <li>出售方 ≠ 实控方的情况非常常见</li>
+        <li>必须做到：</li>
+        <ul>
+          <li>出售决策权 = 土地所有权</li>
+        </ul>
+      </ul>
+
+      <h3>2) 权属常见“雷点”</h3>
+      <ul>
+        <li>土地被多重抵押</li>
+        <li>土地在长期租约下但未披露</li>
+        <li>工业园区土地：</li>
+        <ul>
+          <li>园区公司 ≠ 土地所有人</li>
+        </ul>
+      </ul>
+
+      <div class="note">
+        <strong>项目级结论：</strong><br/>
+        土地权属必须做到“单一、清晰、可直接转让或长期租赁”，任何权属争议即视为否决项。
+      </div>
+    </section>
+
+    <!-- 第四部分 -->
+    <section id="part4">
+      <div class="topic-head">
+        <div class="title-left">
+          <span class="pill">D</span>
+          <h2 class="title">第四部分｜许可顺序（Permitting Sequence）</h2>
+        </div>
+        <a class="btn" href="#part5">跳到红线清单 ↓</a>
+      </div>
+
+      <p class="muted">核心问题：先干什么、后干什么，顺序错了直接卡死。</p>
+
+      <h3>✅ 标准、正确、可落地的许可顺序</h3>
+
+      <h3>Step 1｜土地合法性确认</h3>
+      <ul>
+        <li>用地性质</li>
+        <li>分区规划（HÉSZ）</li>
+      </ul>
+
+      <h3>Step 2｜电网接入可行性确认</h3>
+      <ul>
+        <li>节点</li>
+        <li>技术可行性</li>
+      </ul>
+
+      <h3>Step 3｜建设许可（Építési engedély）</h3>
+      <ul>
+        <li>基于合法土地用途</li>
+      </ul>
+
+      <h3>Step 4｜并网 / 运营许可</h3>
+
+      <h3>❌ 常见错误顺序（很多中介在犯）</h3>
+      <ul>
+        <li>❌ 先签 PPA / 辅助服务合同</li>
+        <li>❌ 先做 EPC</li>
+        <li>❌ 再发现土地不合规</li>
+      </ul>
+
+      <div class="note">
+        <strong>项目级操作原则：</strong><br/>
+        任何电网、EPC、商业谈判，必须在土地合法性确认之后启动。
+      </div>
+    </section>
+
+    <!-- 第五部分 -->
+    <section id="part5">
+      <div class="topic-head">
+        <div class="title-left">
+          <span class="pill">E</span>
+          <h2 class="title">第五部分｜红线清单（Non-negotiable Red Lines）</h2>
+        </div>
+        <a class="btn" href="#top">回到顶部 ↑</a>
+      </div>
+
+      <p class="muted">这是你筛项目时最有用的一页。</p>
+
+      <h3>🚫 一票否决红线</h3>
+      <ol>
+        <li>农业用地待转性</li>
+        <li>土地权属不清 / 多方纠纷</li>
+        <li>用地性质与规划用途冲突</li>
+        <li>土地不可用于融资 / 抵押</li>
+        <li>地方政府态度模糊或明确保留意见</li>
+      </ol>
+
+      <div class="note">
+        <strong>✅ 首单项目“土地最低安全配置”：</strong><br/>
+        工业或能源用地 + 权属清晰 + 无需转性 + 可直接申请建设许可 + 可支持融资。
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    © 匈牙利储能项目 · Topic｜土地问题专项说明
+  </footer>
+</body>
+</html>
 
