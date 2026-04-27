@@ -1,1 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>PDF查看</title>
+</head>
+<body>
 
+<h2>请选择文件：</h2>
+
+<button onclick="openPDF('1.pdf')">打开文件 1</button>
+<button onclick="openPDF('2.pdf')">打开文件 2</button>
+
+<script>
+function openPDF(file) {
+    window.open(file, '_blank');
+}
+</script>
+
+</body>
+</html>
